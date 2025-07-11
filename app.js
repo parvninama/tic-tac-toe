@@ -1,7 +1,10 @@
+let homeScreen = document.querySelector(".home-screen");
+let gameScreen = document.querySelector(".game-screen");
 let buttons = document.querySelectorAll(".button");
 let msg = document.querySelector(".msg");
 let msgContainer = document.querySelector(".msg-container");
-let resetGameButton = document.querySelector(".reset-game");
+let resetGameButton = document.querySelector(".reset-button");
+let startGameButton = document.querySelector(".start-button");
 
 let turnO = true; //For player O
 let turnCount = 0;
@@ -16,22 +19,29 @@ const winConditions = [
     [6,7,8]
 ];
 
+startGameButton.addEventListener("click",()=>{
+    homeScreen.style.display = "none";
+    gameScreen.style.display = "block";
+});
+
 const resetGame = ()=>{
     turnO = true;
     turnCount = 0;
     enableButtons();
-    msgContainer.classList.add("hide");
     resetGameButton.innerText = "Reset Game";
+    msg.innerText = "Player O's Turn";
 }
 
 buttons.forEach((button)=>{
-    button.addEventListener('click',()=>{
+    button.addEventListener("click",()=>{
         if(turnO){
+            msg.innerText = "Player X's Turn";
             button.innerText = "O";
             button.classList.add("O");
             turnO = false;
         }
         else{
+            msg.innerText = "Player O's Turn";
             button.innerText = "X";
             button.classList.add("X");
             turnO = true;
@@ -61,7 +71,7 @@ const disableButtons = ()=>{
 const showWinner = (winner)=>{
     msg.innerText = `Player ${winner} wins!`;
     resetGameButton.innerText = "New Game";
-    msgContainer.classList.remove("hide");
+    msgContainer.style.display = "block";
     disableButtons();
 }
 
@@ -89,9 +99,9 @@ const checkWinner = ()=>{
     }
     if (turnCount === 9 && winnerFound == false) {
         msg.innerText = "It's a Draw!";
-        msgContainer.classList.remove('hide');
+        msgContainer.style.display = "block";
         resetGameButton.classList.add('hide');
         disableButtons();
     }
-}
-resetGameButton.addEventListener("click",resetGame);  
+} 
+resetGameButton.addEventListener("click", resetGame);

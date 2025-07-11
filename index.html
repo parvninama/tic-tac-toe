@@ -7,24 +7,30 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1 class="heading">Tic-tac-toe</h1>
-    <div class="msg-container hide">
-        <p class="msg"></p>
+    <!-- HOME SCREEN -->
+    <div class="home-screen">
+        <h1 class="heading">Tic-tac-toe</h1>
+        <button class="start-button">Start Game</button>
     </div>
-    <div class="container">
-        <div class="game">
-            <button class="button"></button>
-            <button class="button"></button>
-            <button class="button"></button>
-            <button class="button"></button>
-            <button class="button"></button>
-            <button class="button"></button>
-            <button class="button"></button>
-            <button class="button"></button>
-            <button class="button"></button>
-            </div>
+    <div class="game-screen">
+        <div class="msg-container">
+            <p class="msg">Player O's Turn</p>
         </div>
-    <button class="reset-game show">Reset Game</button>
+        <div class="game-container">
+            <div class="game">
+                <button class="button"></button>
+                <button class="button"></button>
+                <button class="button"></button>
+                <button class="button"></button>
+                <button class="button"></button>
+                <button class="button"></button>
+                <button class="button"></button>
+                <button class="button"></button>
+                <button class="button"></button>
+                </div>
+            </div>
+        <button class="reset-button">Reset Game</button>
+        </div>
     <script src="app.js"></script>
 </body>
 </html>
