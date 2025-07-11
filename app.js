@@ -2,7 +2,6 @@ let buttons = document.querySelectorAll(".button");
 let msg = document.querySelector(".msg");
 let msgContainer = document.querySelector(".msg-container");
 let resetGameButton = document.querySelector(".reset-game");
-let newGameButton = document.querySelector(".new-game");
 
 let turnO = true; //For player O
 let turnCount = 0;
@@ -22,7 +21,7 @@ const resetGame = ()=>{
     turnCount = 0;
     enableButtons();
     msgContainer.classList.add("hide");
-    resetGameButton.classList.remove("hide")
+    resetGameButton.innerText = "Reset Game";
 }
 
 buttons.forEach((button)=>{
@@ -61,7 +60,7 @@ const disableButtons = ()=>{
 
 const showWinner = (winner)=>{
     msg.innerText = `Player ${winner} wins!`;
-    resetGameButton.classList.add("hide");
+    resetGameButton.innerText = "New Game";
     msgContainer.classList.remove("hide");
     disableButtons();
 }
@@ -95,5 +94,4 @@ const checkWinner = ()=>{
         disableButtons();
     }
 }
-newGameButton.addEventListener("click",resetGame);
 resetGameButton.addEventListener("click",resetGame);  
