@@ -1,6 +1,6 @@
 let homeScreen = document.querySelector(".home-screen");
 let gameScreen = document.querySelector(".game-screen");
-let buttons = document.querySelectorAll(".button");
+let cells = document.querySelectorAll(".cells");
 let msg = document.querySelector(".msg");
 let msgContainer = document.querySelector(".msg-container");
 let resetGameButton = document.querySelector(".reset-button");
@@ -27,44 +27,44 @@ startGameButton.addEventListener("click",()=>{
 const resetGame = ()=>{
     turnO = true;
     turnCount = 0;
-    enableButtons();
+    enableButton();
     resetGameButton.innerText = "Reset Game";
     msg.innerText = "Player O's Turn";
 }
 
-buttons.forEach((button)=>{
-    button.addEventListener("click",()=>{
+cells.forEach((cell)=>{
+    cell.addEventListener("click",()=>{
         if(turnO){
             msg.innerText = "Player X's Turn";
-            button.innerText = "O";
-            button.classList.add("O");
+            cell.innerText = "O";
+            cell.classList.add("O");
             turnO = false;
         }
         else{
             msg.innerText = "Player O's Turn";
-            button.innerText = "X";
-            button.classList.add("X");
+            cell.innerText = "X";
+            cell.classList.add("X");
             turnO = true;
         }
-        button.disabled = true;
+        cell.disabled = true;
         turnCount++;
         checkWinner();
     });
 });
 
-const enableButtons = ()=>{
-    for(let button of buttons){
-        button.disabled = false;
-        button.innerText = "";
-        button.classList.remove("win");
-        button.classList.remove("O");
-        button.classList.remove("X");
+const enableButton = ()=>{
+    for(let cell of cells){
+        cell.disabled = false;
+        cell.innerText = "";
+        cell.classList.remove("win");
+        cell.classList.remove("O");
+        cell.classList.remove("X");
     }
 }
 
-const disableButtons = ()=>{
-    for(let button of buttons){
-        button.disabled = true;
+const disableButton = ()=>{
+    for(let cell of cells){
+        cell.disabled = true;
     }
 }
 
@@ -72,12 +72,12 @@ const showWinner = (winner)=>{
     msg.innerText = `Player ${winner} wins!`;
     resetGameButton.innerText = "New Game";
     msgContainer.style.display = "block";
-    disableButtons();
+    disableButton();
 }
 
 const WinningLine = (condition)=>{
     condition.forEach((position)=>{
-        buttons[position].classList.add("win");
+        cells[position].classList.add("win");
     })
 }
 
@@ -85,9 +85,9 @@ const checkWinner = ()=>{
     let winnerFound = false;
     for(let condition of winConditions){
 
-        let pos1val = buttons[condition[0]].innerText;
-        let pos2val = buttons[condition[1]].innerText;
-        let pos3val = buttons[condition[2]].innerText;
+        let pos1val = cells[condition[0]].innerText;
+        let pos2val = cells[condition[1]].innerText;
+        let pos3val = cells[condition[2]].innerText;
 
         if( pos1val!="" && pos2val!="" && pos3val!=""){
             if (pos1val===pos2val && pos2val===pos3val && pos3val===pos1val){
@@ -101,7 +101,8 @@ const checkWinner = ()=>{
         msg.innerText = "It's a Draw!";
         msgContainer.style.display = "block";
         resetGameButton.classList.add('hide');
-        disableButtons();
+        disableButton();
     }
 } 
+
 resetGameButton.addEventListener("click", resetGame);
