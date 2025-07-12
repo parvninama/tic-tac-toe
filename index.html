@@ -4,17 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tic-tac-toe</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bitcount+Grid+Double:wght@100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <!-- HOME SCREEN -->
     <div class="home-screen">
-        <h1 class="heading">Tic-tac-toe</h1>
-        <button class="start-button">Start Game</button>
+        <h1 class="heading">Tic Tac Toe</h1>
+        <button class="single-player button" onclick="startGame('single')">Play vs Computer</button>
+        <button class="multi-player button" onclick="startGame('multi')"">Play with a Friend</button>
+        <footer><p>Made by Parv</p></footer>
     </div>
     <div class="game-screen">
         <div class="msg-container">
-            <p class="msg">Player O's Turn</p>
+            <p class="msg"></p>
         </div>
         <div class="game-container">
             <div class="game">
@@ -29,7 +34,7 @@
                 <button class="cells"></button>
                 </div>
             </div>
-        <button class="reset-button">Reset Game</button>
+        <button class="reset button">Reset Game</button>
         </div>
     <script src="app.js"></script>
 </body>

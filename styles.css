@@ -11,6 +11,21 @@ body{
     overflow-y: hidden;
 }
 
+.home-screen{
+    position: relative;
+    top: 230px;
+}
+
+.heading{
+    font-family: 'Bitcount Grid Double', sans-serif;
+    font-weight: 300;
+    font-size: 5rem;
+}
+
+.single-player,.multi-player{
+    margin: 2rem;
+}
+
 .game-screen{
     display: none;
 }
@@ -43,7 +58,8 @@ body{
     box-shadow: 0 0 1rem rgb(0,0,0,0.2);
 }
 
-.reset-button,.start-button{
+.button{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     padding: 1rem;
     background-color:#141B41;
     color:#bbd0ff;

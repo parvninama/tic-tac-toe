@@ -3,9 +3,9 @@ let gameScreen = document.querySelector(".game-screen");
 let cells = document.querySelectorAll(".cells");
 let msg = document.querySelector(".msg");
 let msgContainer = document.querySelector(".msg-container");
-let resetGameButton = document.querySelector(".reset-button");
-let startGameButton = document.querySelector(".start-button");
+let resetGameButton = document.querySelector(".reset");
 
+let gameMode = "multi"; 
 let turnO = true; //For player O
 let turnCount = 0;
 const winConditions = [
@@ -19,38 +19,60 @@ const winConditions = [
     [6,7,8]
 ];
 
-startGameButton.addEventListener("click",()=>{
-    homeScreen.style.display = "none";
-    gameScreen.style.display = "block";
-});
+function startGame(mode) {
+    gameMode = mode;
+    homeScreen.style.display = 'none';
+    gameScreen.style.display = 'block';
+
+    resetGame();
+
+    msg.innerText = gameMode === "multi" ? "Player X's Turn" : "Player's Turn";
+}
+
 
 const resetGame = ()=>{
-    turnO = true;
+    turnO = false;
     turnCount = 0;
     enableButton();
     resetGameButton.innerText = "Reset Game";
-    msg.innerText = "Player O's Turn";
+    msg.innerText = gameMode === "multi" ? "Player X's Turn" : "Player's Turn";
 }
 
-cells.forEach((cell)=>{
+cells.forEach((cell) =>{
     cell.addEventListener("click",()=>{
-        if(turnO){
-            msg.innerText = "Player X's Turn";
-            cell.innerText = "O";
-            cell.classList.add("O");
-            turnO = false;
+        if(cell.innerText != "") return;
+        
+        if(gameMode == "multi"){
+            playerMove(cell);
         }
-        else{
-            msg.innerText = "Player O's Turn";
-            cell.innerText = "X";
-            cell.classList.add("X");
-            turnO = true;
+        else if(gameMode == "single" && !turnO){
+            playerMove(cell);
+
+            if(turnCount < 9){
+                setTimeout(computerMove,300);
+            }
         }
-        cell.disabled = true;
-        turnCount++;
-        checkWinner();
+
     });
 });
+
+const playerMove = (cell)=>{
+    if(turnO){
+        msg.innerText = "Player O's Turn";
+        cell.innerText = "X";
+        cell.classList.add("X");
+        turnO = false;
+    }
+    else{
+        msg.innerText = "Player X's Turn";
+        cell.innerText = "O";
+        cell.classList.add("O");
+        turnO = true;
+    }
+    cell.disabled = true;
+    turnCount++;
+    checkWinner();
+};
 
 const enableButton = ()=>{
     for(let cell of cells){
