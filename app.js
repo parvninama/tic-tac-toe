@@ -58,15 +58,15 @@ cells.forEach((cell) =>{
 
 const playerMove = (cell)=>{
     if(turnO){
-        msg.innerText = "Player O's Turn";
-        cell.innerText = "X";
-        cell.classList.add("X");
-        turnO = false;
-    }
-    else{
         msg.innerText = "Player X's Turn";
         cell.innerText = "O";
         cell.classList.add("O");
+        turnO = false;
+    }
+    else{
+        msg.innerText = "Player O's Turn";
+        cell.innerText = "X";
+        cell.classList.add("X");
         turnO = true;
     }
     cell.disabled = true;
