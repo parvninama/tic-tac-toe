@@ -46,10 +46,12 @@ cells.forEach((cell) =>{
             playerMove(cell);
         }
         else if(gameMode == "single" && !turnO){
+            msg.innerText = "Player's Turn";
             playerMove(cell);
 
             if(turnCount < 9){
-                setTimeout(computerMove,300);
+                msg.innerText = "Computer's Turn";
+                setTimeout(computerMove,400);
             }
         }
 
@@ -58,13 +60,13 @@ cells.forEach((cell) =>{
 
 const playerMove = (cell)=>{
     if(turnO){
-        msg.innerText = "Player X's Turn";
+        msg.innerText = gameMode === "multi" ? "Player X's Turn" : "Player's Turn";
         cell.innerText = "O";
         cell.classList.add("O");
         turnO = false;
     }
     else{
-        msg.innerText = "Player O's Turn";
+        msg.innerText = gameMode === "multi" ? "Player O's Turn" : "Player's Turn";
         cell.innerText = "X";
         cell.classList.add("X");
         turnO = true;
@@ -73,6 +75,84 @@ const playerMove = (cell)=>{
     turnCount++;
     checkWinner();
 };
+
+const computerMove = ()=>{
+    // 1. Try to win
+    for(let i = 0 ; i<cells.length ; i++){
+        if(cells[i].innerText ===""){
+            cells[i].innerText = "O";
+            if(checkResult()==="O"){
+                finalizeMove(i);
+                return;
+            }
+            cells[i].innerText = "";
+        }
+    }
+
+    // 2. Try to block Player's Win
+     for(let i = 0 ; i<cells.length ; i++){
+        if(cells[i].innerText ===""){
+            cells[i].innerText = "X";
+            if(checkResult()==="X"){
+                finalizeMove(i);
+                return;
+            }
+            cells[i].innerText = "";
+        }
+    }
+
+    // 3. Take Center
+    if(cells[4].innerText === ""){
+        finalizeMove(4);
+        return;
+    }
+
+    // 4. Take a Corner 
+    const corners = [0,2,6,8];
+    const availableCorners = corners.filter(i =>cells[i].innerText === "" );
+    if(availableCorners.length > 0){
+        const randomCorner = availableCorners[Math.floor(Math.random()*availableCorners.length)];
+        finalizeMove(randomCorner);
+        return;
+    }
+
+    // 5. Pick any available cells
+    let emptyCells = Array.from(cells).map((c,i) => c.innerText === "" ? i: -1).filter(i => i !== -1);
+    if(emptyCells.length > 0){
+        let randomCell = emptyCells[Math.floor(Math.random()*emptyCells.length)];
+        finalizeMove(randomCell);
+    }
+}
+
+const finalizeMove = (index)=>{
+    cells[index].innerText = "O";
+    cells[index].classList.add("O");
+    cells[index].disabled = true;
+    msg.innerText = "Player's Turn";
+    turnO = false;
+    turnCount++;
+    checkWinner();
+}
+
+const checkResult = ()=>{
+
+    for(let condition of winConditions){
+
+        let pos1val = cells[condition[0]].innerText;
+        let pos2val = cells[condition[1]].innerText;
+        let pos3val = cells[condition[2]].innerText;
+
+        if(pos1val !== "" && pos1val === pos2val && pos2val ===pos3val){
+            return pos1val;
+        }
+    }
+
+    if(Array.from(cells).every(cell=>cell.innerText !== "")){
+        return "draw";
+    }
+
+    return null;
+}
 
 const enableButton = ()=>{
     for(let cell of cells){
@@ -91,9 +171,8 @@ const disableButton = ()=>{
 }
 
 const showWinner = (winner)=>{
-    msg.innerText = `Player ${winner} wins!`;
+    msg.innerText = gameMode === "multi" ? `Player ${winner} wins!` : " Computer Wins";
     resetGameButton.innerText = "New Game";
-    msgContainer.style.display = "block";
     disableButton();
 }
 
