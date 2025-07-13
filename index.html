@@ -4,17 +4,35 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tic-tac-toe</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bitcount+Grid+Double:wght@100..900&display=swap" rel="stylesheet">
+
+    <link rel="preconnect" 
+    href="https://fonts.googleapis.com">
+
+    <link rel="preconnect" 
+    href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Bitcount+Grid+Double:wght@100..900&display=swap"
+    rel="stylesheet">
+
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"/>
+
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <div class="hamburger-menu">
+        <button class="home button"><i class=" fa-solid fa-house"></i></button>
+        <button class="theme button"><i class=" fa-solid fa-lightbulb"></i></button>
+        <button class="music button"><i class="fa-solid fa-volume-xmark"></i></button>
+    </div>
     <!-- HOME SCREEN -->
     <div class="home-screen">
         <h1 class="heading">Ⅹ Tic Tac Toe 〇</h1>
-        <button class="single-player button" onclick="startGame('single')">Play vs Computer</button>
-        <button class="multi-player button" onclick="startGame('multi')"">Play with a Friend</button>
+        <button class="mode button" onclick="startGame('single')">Play vs Computer</button>
+        <button class="mode button" onclick="startGame('multi')"">Play with a Friend</button>
         <footer><p>Made by Parv</p></footer>
     </div>
     <div class="game-screen">

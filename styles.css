@@ -11,9 +11,41 @@ body{
     overflow-y: hidden;
 }
 
+footer{
+    text-decoration: underline;
+    font-style: italic;
+}
+
+.hamburger-menu{
+    display: flex;
+    justify-content: end;
+}
+
+.home,.theme,.music{
+    margin: 0.4rem;
+}
+
+.button{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    padding: 1rem;
+    transition: transform 0.3s ease , box-shadow 0.3s ease;
+    background-color:#141B41;
+    color:#bbd0ff;
+    border-radius: 1rem;
+    font-size: 1.25rem;
+    border-radius: 1rem;
+    border: none;
+    cursor: pointer;
+}
+
+.button:hover{
+    transform: scale(1.1);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
 .home-screen{
     position: relative;
-    top: 230px;
+    top: 140px;
 }
 
 .heading{
@@ -22,12 +54,22 @@ body{
     font-size: 5rem;
 }
 
-.single-player,.multi-player{
-    margin: 2rem;
+.mode{
+    margin: 3rem;
 }
 
 .game-screen{
     display: none;
+}
+
+.msg{
+    color: #141B41;
+    font-size: 8vmin;
+    margin: 2vmin;
+}
+
+.msg-container{
+    height: 10vmin;
 }
 
 .game-container{
@@ -50,33 +92,19 @@ body{
 .cells{
     height: 18vmin;
     background-color: #6F9CEB;
+    transition: transform 0.3s ease , box-shadow 0.3s ease;
     color: #141B41;
     width:18vmin;
     border: none;
     font-size: 8vmin;
     border-radius: 1rem;
     box-shadow: 0 0 1rem rgb(0,0,0,0.2);
+    cursor: pointer;
 }
 
-.button{
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    padding: 1rem;
-    background-color:#141B41;
-    color:#bbd0ff;
-    border-radius: 1rem;
-    font-size: 1.25rem;
-    border-radius: 1rem;
-    border: none;
-}
-
-.msg{
-    color: #141B41;
-    font-size: 8vmin;
-    margin: 2vmin;
-}
-
-.msg-container{
-    height: 10vmin;
+.cells:hover{
+    transform: scale(1.1);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
 }
 
 .win {
