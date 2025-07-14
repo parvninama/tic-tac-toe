@@ -2,8 +2,9 @@
     margin: 0;
     padding: 0;
 }
-
 body{
+    background-image: url("Images/light-mode.png");
+    background-size: cover;
     background-color:#98B9F2;        
     text-align: center;
     color:#141B41;
@@ -14,6 +15,7 @@ body{
 footer{
     text-decoration: underline;
     font-style: italic;
+    margin-top: 1rem;
 }
 
 .hamburger-menu{
@@ -50,6 +52,7 @@ footer{
 
 .heading{
     font-family: 'Bitcount Grid Double', sans-serif;
+    margin-top: 2rem;
     font-weight: 300;
     font-size: 5rem;
 }

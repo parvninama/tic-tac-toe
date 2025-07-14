@@ -214,6 +214,7 @@ const checkWinner = ()=>{
     }
     if (turnCount === 9 && winnerFound == false) {
         msg.innerText = "It's a Draw!";
+        msg.style.textDecoration = "underline";
         resetGameButton.innerText = "New Game";
         disableButtons();
     }
@@ -225,6 +226,10 @@ homeButton.addEventListener("click", ()=>{
     homeScreen.style.display = "block";
     gameScreen.style.display = "none";
     resetGame();
+});
+
+themeButton.addEventListener("click",()=>{
+    
 });
 
 musicButton.addEventListener("click",()=>{
