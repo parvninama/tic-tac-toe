@@ -45,9 +45,13 @@ footer{
     box-shadow: 0 4px 12px rgba(0,0,0,0.2);
 }
 
+
 .home-screen{
     position: relative;
     top: 140px;
+    transition: all 0.5s ease-in-out;
+    opacity: 1;
+    transform: translateX(0);
 }
 
 .heading{
@@ -63,6 +67,9 @@ footer{
 
 .game-screen{
     display: none;
+    transition: all 0.5s ease-in-out;
+    opacity: 1;
+    transform: translateX(0);
 }
 
 .msg{
@@ -106,6 +113,7 @@ footer{
 }
 
 .cells:hover{
+    cursor: pointer;
     transform: scale(1.1);
     box-shadow: 0 4px 12px rgba(0,0,0,0.2);
 }
@@ -120,4 +128,15 @@ footer{
 
 .X{
     color: #a9def9;
+}
+
+body.dark-theme {
+    background-image: url("Images/dark-mode.png");
+    background-color:#141B41;
+    color:#98B9F2;
+}
+
+body.dark-theme .button{
+    background-color:#bbd0ff;
+    color:#141B41;
 }

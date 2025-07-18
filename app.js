@@ -1,96 +1,97 @@
-let homeScreen = document.querySelector(".home-screen");
-let gameScreen = document.querySelector(".game-screen");
-let cells = document.querySelectorAll(".cells");
-let msg = document.querySelector(".msg");
-let msgContainer = document.querySelector(".msg-container");
-let resetGameButton = document.querySelector(".reset");
-let homeButton = document.querySelector(".home");
-let themeButton = document.querySelector(".theme");
-let musicButton = document.querySelector(".music");
+// DOM Elements
+const homeScreen = document.querySelector(".home-screen");
+const gameScreen = document.querySelector(".game-screen");
+const cells = document.querySelectorAll(".cells");
+const msg = document.querySelector(".msg");
+const resetGameButton = document.querySelector(".reset");
+const homeButton = document.querySelector(".home");
+const themeButton = document.querySelector(".theme");
+const musicButton = document.querySelector(".music");
 
-let gameMode = "multi"; 
-let turnO = true; //For player O
+// Game State
+let gameMode = "multi";
+let gameOver = false;
+let turnO = true;
 let turnCount = 0;
+
+// Music
 const audio = new Audio("https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3");
-audio.loop =true
-const wait = (ms)=> new Promise(resolve => setTimeout(resolve,ms));
+audio.loop = true;
+
+// Utility
+const wait = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 const winConditions = [
-    [0,1,2],
-    [0,3,6],
-    [0,4,8],
-    [1,4,7],
-    [2,5,8],
-    [2,4,6],
-    [3,4,5],
-    [6,7,8]
+    [0,1,2], [0,3,6], [0,4,8],
+    [1,4,7], [2,5,8], [2,4,6],
+    [3,4,5], [6,7,8]
 ];
 
+// Start Game
 function startGame(mode) {
     gameMode = mode;
-    homeScreen.style.display = 'none';
-    gameScreen.style.display = 'block';
-
+    homeScreen.style.display = "none";
+    gameScreen.style.display = "block";
     resetGame();
-
-    msg.innerText = gameMode === "multi" ? "Player X's Turn" : "Player's Turn";
 }
 
-
-const resetGame = ()=>{
+// Reset Game
+function resetGame() {
+    gameOver = false;
     turnO = false;
     turnCount = 0;
-    enableButtons();
     resetGameButton.innerText = "Reset Game";
     msg.style.textDecoration = "none";
     msg.innerText = gameMode === "multi" ? "Player X's Turn" : "Player's Turn";
-    for(let cell of cells){
-            cell.innerText = "";
-            cell.classList.remove("win", "O", "X");
-    }
+
+    cells.forEach(cell => {
+        cell.innerText = "";
+        cell.classList.remove("win", "O", "X");
+        cell.style.pointerEvents = "auto";
+        cell.disabled = false;
+    });
 }
 
-cells.forEach((cell) =>{
-    cell.addEventListener("click", async ()=>{
-        if(cell.innerText != "") return;
-        
-        if(gameMode == "multi"){
+// Handle Cell Click
+cells.forEach(cell => {
+    cell.addEventListener("click", async () => {
+        if (cell.innerText || gameOver) return;
+
+        if (gameMode === "multi") {
             playerMove(cell);
-        }
-        else if(gameMode == "single" && !turnO){
+        } else if (!turnO) {
             msg.innerText = "Player's Turn";
             playerMove(cell);
             disableButtons();
 
-            if(turnCount < 9){
+            if (!gameOver && turnCount < 9) {
                 msg.innerText = "Computer's Turn";
                 await wait(400);
                 computerMove();
                 enableButtons();
             }
         }
-
     });
 });
 
-const playerMove = (cell)=>{
-    if(turnO){
-        msg.innerText = gameMode === "multi" ? "Player X's Turn" : "Player's Turn";
-        cell.innerText = "O";
-        cell.classList.add("O");
-        turnO = false;
-    }
-    else{
-        msg.innerText = gameMode === "multi" ? "Player O's Turn" : "Player's Turn";
-        cell.innerText = "X";
-        cell.classList.add("X");
-        turnO = true;
-    }
+// Player Move
+function playerMove(cell) {
+    const currentPlayer = turnO ? "O" : "X";
+    cell.innerText = currentPlayer;
+    cell.classList.add(currentPlayer);
     cell.style.pointerEvents = "none";
     cell.disabled = true;
-    turnCount++;
-    checkWinner();
-};
 
+    turnO = !turnO;
+    turnCount++;
+
+    msg.innerText = gameMode === "multi"
+        ? `Player ${turnO ? "X" : "O"}'s Turn`
+        : "Player's Turn";
+
+    checkWinner();
+}
+
+// Computer Move
 const computerMove = ()=>{
     // 1. Try to win
     for(let i = 0 ; i<cells.length ; i++){
@@ -139,18 +140,47 @@ const computerMove = ()=>{
     }
 }
 
-const finalizeMove = (index)=>{
+// Finalize Computer Move
+function finalizeMove(index) {
     cells[index].innerText = "O";
     cells[index].classList.add("O");
     cells[index].disabled = true;
-    msg.innerText = "Player's Turn";
-    turnO = false;
     turnCount++;
+    turnO = false;
+    msg.innerText = "Player's Turn";
     checkWinner();
 }
 
-const checkResult = ()=>{
+// Check Winner
+function checkWinner() {
+    let winnerFound = false;
+    for(let condition of winConditions){
 
+        let pos1val = cells[condition[0]].innerText;
+        let pos2val = cells[condition[1]].innerText;
+        let pos3val = cells[condition[2]].innerText;
+
+        if( pos1val!="" && pos2val!="" && pos3val!=""){
+            if (pos1val===pos2val && pos2val===pos3val && pos3val===pos1val){
+                winnerFound = true;
+                WinningLine(condition);
+                showWinner(pos1val);
+                gameOver = true;
+            }
+        }
+    }
+    if (turnCount === 9 && winnerFound == false) {
+        msg.innerText = "It's a Draw!";
+        msg.style.textDecoration = "underline";
+        resetGameButton.innerText = "New Game";
+        disableButtons();
+        gameOver = true;
+
+    }
+} 
+
+// Check for Result (Used by AI)
+function checkResult() {
     for(let condition of winConditions){
 
         let pos1val = cells[condition[0]].innerText;
@@ -169,22 +199,25 @@ const checkResult = ()=>{
     return null;
 }
 
-const enableButtons = ()=>{
-    for(let cell of cells){
+// UI Helpers
+function enableButtons() {
+    cells.forEach(cell => {
         cell.style.pointerEvents = "auto";
         cell.disabled = false;
-    }
+    });
 }
 
-const disableButtons = ()=>{
-    for(let cell of cells){
+function disableButtons() {
+    cells.forEach(cell => {
         cell.style.pointerEvents = "none";
         cell.disabled = true;
-    }
+    });
 }
 
-const showWinner = (winner)=>{
-    msg.innerText = gameMode === "multi" ? `Player ${winner} wins!` : " Computer Wins";
+function showWinner(winner) {
+    msg.innerText = gameMode === "multi"
+        ? `Player ${winner} wins!`
+        : "Computer Wins";
     msg.style.textDecoration = "underline";
     resetGameButton.innerText = "New Game";
     disableButtons();
@@ -196,53 +229,29 @@ const WinningLine = (condition)=>{
     })
 }
 
-const checkWinner = ()=>{
-    let winnerFound = false;
-    for(let condition of winConditions){
-
-        let pos1val = cells[condition[0]].innerText;
-        let pos2val = cells[condition[1]].innerText;
-        let pos3val = cells[condition[2]].innerText;
-
-        if( pos1val!="" && pos2val!="" && pos3val!=""){
-            if (pos1val===pos2val && pos2val===pos3val && pos3val===pos1val){
-                winnerFound = true;
-                WinningLine(condition);
-                showWinner(pos1val);
-            }
-        }
-    }
-    if (turnCount === 9 && winnerFound == false) {
-        msg.innerText = "It's a Draw!";
-        msg.style.textDecoration = "underline";
-        resetGameButton.innerText = "New Game";
-        disableButtons();
-    }
-} 
-
+// Buttons and Events
 resetGameButton.addEventListener("click", resetGame);
 
-homeButton.addEventListener("click", ()=>{
+homeButton.addEventListener("click", () => {
     homeScreen.style.display = "block";
     gameScreen.style.display = "none";
     resetGame();
 });
 
-themeButton.addEventListener("click",()=>{
-    
+themeButton.addEventListener("click", () => {
+    document.body.classList.toggle("dark-theme");
 });
 
-musicButton.addEventListener("click",()=>{
+musicButton.addEventListener("click", () => {
     const musicIcon = musicButton.querySelector("i");
-    if(musicIcon.classList.contains("fa-volume-xmark")){
-        musicIcon.classList.remove("fa-volume-xmark");
-        musicIcon.classList.add("fa-volume-high");
-        audio.play();
-    }
-    else{
-        musicIcon.classList.remove("fa-volume-high");
-        musicIcon.classList.add("fa-volume-xmark");
-        audio.pause(); 
+    const isMuted = musicIcon.classList.contains("fa-volume-xmark");
+
+    musicIcon.classList.toggle("fa-volume-xmark", !isMuted);
+    musicIcon.classList.toggle("fa-volume-high", isMuted);
+
+    if (isMuted) audio.play();
+    else {
+        audio.pause();
         audio.currentTime = 0;
     }
 });
