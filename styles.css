@@ -1,142 +1,256 @@
-*{
-    margin: 0;
-    padding: 0;
-}
-body{
-    background-image: url("Images/light-mode.png");
-    background-size: cover;
-    background-color:#98B9F2;        
-    text-align: center;
-    color:#141B41;
-    font-size: 3vmin;
-    overflow-y: hidden;
+/* ========== Base Reset ========== */
+* {
+  margin: 0;
+  padding: 0;
 }
 
-footer{
-    text-decoration: underline;
-    font-style: italic;
-    margin-top: 1rem;
+/* ========== Body Styling ========== */
+body {
+  background-image: url("Images/light-mode.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  background-color: #98B9F2;
+  text-align: center;
+  color: #011627;
+  font-size: 3vmin;
+  overflow-y: hidden;
 }
 
-.hamburger-menu{
-    display: flex;
-    justify-content: end;
+/* ========== Footer ========== */
+footer {
+  text-decoration: underline;
+  font-style: italic;
+  margin-top: 1rem;
 }
 
-.home,.theme,.music{
-    margin: 0.4rem;
+/* ========== Top Menu Buttons ========== */
+.hamburger-menu {
+  display: flex;
+  justify-content: flex-end;
 }
 
-.button{
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    padding: 1rem;
-    transition: transform 0.3s ease , box-shadow 0.3s ease;
-    background-color:#141B41;
-    color:#bbd0ff;
-    border-radius: 1rem;
-    font-size: 1.25rem;
-    border-radius: 1rem;
-    border: none;
-    cursor: pointer;
+.home,
+.theme,
+.music {
+  margin: 0.4rem;
 }
 
-.button:hover{
-    transform: scale(1.1);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+/* ========== Reusable Button ========== */
+.button {
+  font-family: 'Lucida Sans', Geneva, Verdana, sans-serif;
+  padding: 1rem;
+  background-color: #141B41;
+  color: #bbd0ff;
+  font-size: 1.25rem;
+  border: none;
+  border-radius: 1rem;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-
-.home-screen{
-    position: relative;
-    top: 140px;
-    transition: all 0.5s ease-in-out;
-    opacity: 1;
-    transform: translateX(0);
+.button:hover {
+  transform: scale(1.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
-.heading{
-    font-family: 'Bitcount Grid Double', sans-serif;
-    margin-top: 2rem;
-    font-weight: 300;
-    font-size: 5rem;
+/* ========== Home Screen ========== */
+.home-screen {
+  position: relative;
+  top: 140px;
+  opacity: 1;
+  transform: translateX(0);
+  transition: all 0.5s ease-in-out;
 }
 
-.mode{
-    margin: 3rem;
+.heading {
+  font-family: 'Bitcount Grid Double', sans-serif;
+  margin-top: 2rem;
+  font-weight: 300;
+  font-size: 5rem;
 }
 
-.game-screen{
-    display: none;
-    transition: all 0.5s ease-in-out;
-    opacity: 1;
-    transform: translateX(0);
+.mode {
+  margin: 3rem;
 }
 
-.msg{
-    color: #141B41;
-    font-size: 8vmin;
-    margin: 2vmin;
+/* ========== Game Screen ========== */
+.game-screen {
+  display: none;
+  opacity: 1;
+  transform: translateX(0);
+  transition: all 0.5s ease-in-out;
 }
 
-.msg-container{
-    height: 10vmin;
+.msg {
+  color: #141B41;
+  font-size: 8vmin;
+  margin: 2vmin;
 }
 
-.game-container{
-    height: 70vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.msg-container {
+  height: 10vmin;
 }
 
-.game{
-    height: 60vmin;
-    width:60vmin;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-    gap: 1.5vmin;
+/* ========== Game Board ========== */
+.game-container {
+  height: 70vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.cells{
-    height: 18vmin;
-    background-color: #6F9CEB;
-    transition: transform 0.3s ease , box-shadow 0.3s ease;
-    color: #141B41;
-    width:18vmin;
-    border: none;
-    font-size: 8vmin;
-    border-radius: 1rem;
-    box-shadow: 0 0 1rem rgb(0,0,0,0.2);
-    cursor: pointer;
+.game {
+  height: 60vmin;
+  width: 60vmin;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5vmin;
 }
 
-.cells:hover{
-    cursor: pointer;
-    transform: scale(1.1);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+.cells {
+  height: 18vmin;
+  width: 18vmin;
+  font-size: 8vmin;
+  border: none;
+  border-radius: 1rem;
+  background-color: #6F9CEB;
+  box-shadow: 0 0 1rem rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
+.cells:hover {
+  transform: scale(1.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* ========== Player and Win Styles ========== */
 .win {
-    background-color:#141B41;
+  background-color: #141B41;
 }
 
-.O{
-    color:#e0aaff;
+.O {
+  color: #e0aaff;
 }
 
-.X{
-    color: #a9def9;
+.X {
+  color: #a9def9;
 }
 
+/* ========== Dark Theme ========== */
 body.dark-theme {
-    background-image: url("Images/dark-mode.png");
-    background-color:#141B41;
-    color:#98B9F2;
+  background-image: url("Images/dark-mode.png");
+  background-color: #141B41;
+  color: #6F9CEB;
 }
 
-body.dark-theme .button{
-    background-color:#bbd0ff;
-    color:#141B41;
+body.dark-theme .button {
+  background-color: #98B9F2;
+  color: #141B41;
+}
+
+body.dark-theme .msg {
+  color: #98B9F2;
+}
+
+body.dark-theme .cells {
+  background-color: #141B41;
+}
+
+body.dark-theme .win {
+  background-color: #6F9CEB;
+}
+
+body.dark-theme .X {
+  color: #24e6e6;
+}
+
+body.dark-theme .O {
+  color: #cf21b5;
+}
+
+/* ========== Responsive Design ========== */
+
+/* Tablet (≤1024px) */
+@media screen and (max-width: 1024px) {
+  .heading {
+    font-size: 4rem;
+  }
+
+  .button {
+    padding: 0.8rem;
+    font-size: 1rem;
+  }
+
+  .game {
+    height: 80vmin;
+    width: 80vmin;
+    gap: 2vmin;
+  }
+
+  .cells {
+    height: 24vmin;
+    width: 24vmin;
+    font-size: 6vmin;
+  }
+
+  .msg {
+    font-size: 6vmin;
+  }
+
+  .msg-container {
+    height: 12vmin;
+  }
+}
+
+/* Mobile (≤768px) */
+@media screen and (max-width: 768px) {
+  body {
+    background-image: url("Images/light-mode-mobile.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+  }
+
+  body.dark-theme {
+    background-image: url("Images/dark-mode-mobile.png");
+  }
+
+  .heading {
+    font-size: 3rem;
+  }
+
+  .button {
+    padding: 0.6rem;
+    font-size: 0.9rem;
+  }
+
+  .mode {
+    margin: 2rem;
+  }
+
+  .game {
+    height: 90vmin;
+    width: 90vmin;
+    gap: 2vmin;
+  }
+
+  .cells {
+    height: 26vmin;
+    width: 26vmin;
+    font-size: 7vmin;
+  }
+
+  .msg {
+    font-size: 5vmin;
+  }
+
+  .msg-container {
+    height: 10vmin;
+  }
 }

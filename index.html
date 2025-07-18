@@ -5,42 +5,60 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tic-tac-toe</title>
 
-    <link rel="preconnect" 
-    href="https://fonts.googleapis.com">
+    <!-- Preconnect for faster Google Fonts loading -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    <link rel="preconnect" 
-    href="https://fonts.gstatic.com" crossorigin>
+    <!-- Google Font: Bitcount Grid Double -->
+    <link href="https://fonts.googleapis.com/css2?family=Bitcount+Grid+Double:wght@100..900&display=swap" rel="stylesheet">
 
-    <link href="https://fonts.googleapis.com/css2?family=Bitcount+Grid+Double:wght@100..900&display=swap"
-    rel="stylesheet">
-
+    <!-- Font Awesome for icons (house, bulb, volume) -->
     <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-    crossorigin="anonymous"
-    referrerpolicy="no-referrer"/>
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        crossorigin="anonymous"
+        referrerpolicy="no-referrer"
+    />
 
+    <!-- Main CSS file -->
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+
+    <!-- Top-right floating control menu -->
     <div class="hamburger-menu">
-        <button class="home button"><i class=" fa-solid fa-house"></i></button>
-        <button class="theme button"><i class=" fa-solid fa-lightbulb"></i></button>
-        <button class="music button"><i class="fa-solid fa-volume-xmark"></i></button>
+        <button class="home button"><i class="fa-solid fa-house"></i></button>     <!-- Home button -->
+        <button class="theme button"><i class="fa-solid fa-lightbulb"></i></button> <!-- Theme toggle -->
+        <button class="music button"><i class="fa-solid fa-volume-xmark"></i></button> <!-- Music toggle -->
     </div>
-    <!-- HOME SCREEN -->
+
+    <!-- =========================
+         HOME SCREEN SECTION
+    ========================== -->
     <div class="home-screen">
         <h1 class="heading">․ Tic Tac Toe ․</h1>
+
+        <!-- Buttons to choose game mode -->
         <button class="mode button" onclick="startGame('single')">Play vs Computer</button>
-        <button class="mode button" onclick="startGame('multi')"">Play with a Friend</button>
+        <button class="mode button" onclick="startGame('multi')">Play with a Friend</button>
+
+        <!-- Footer credit -->
         <footer><p>Made by Parv</p></footer>
     </div>
+
+    <!-- =========================
+         GAME SCREEN SECTION
+    ========================== -->
     <div class="game-screen">
+        <!-- Message shown after win/draw -->
         <div class="msg-container">
             <p class="msg"></p>
         </div>
+
+        <!-- Main Tic Tac Toe board -->
         <div class="game-container">
             <div class="game">
+                <!-- 9 clickable cells -->
                 <button class="cells"></button>
                 <button class="cells"></button>
                 <button class="cells"></button>
@@ -50,10 +68,14 @@
                 <button class="cells"></button>
                 <button class="cells"></button>
                 <button class="cells"></button>
-                </div>
             </div>
-        <button class="reset button">Reset Game</button>
         </div>
+
+        <!-- Reset Game Button -->
+        <button class="reset button">Reset Game</button>
+    </div>
+
+    <!-- Main JavaScript file (entry point) -->
     <script src="app.js"></script>
 </body>
 </html>
