@@ -15,7 +15,7 @@ let turnO = true;
 let turnCount = 0;
 
 // Music
-const audio = new Audio("https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3");
+const audio = new Audio("https://eta.vgmtreasurechest.com/soundtracks/pokemon-black-and-white-super-music-collection/hhrvqtky/2-02.%20Driftveil%20City.mp3");
 audio.loop = true;
 
 // Utility

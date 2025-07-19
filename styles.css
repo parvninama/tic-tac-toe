@@ -32,6 +32,14 @@ footer {
   margin-top: 1rem;
 }
 
+.footer-link{
+  color: #141B41;
+}
+
+.footer-link:hover{
+  color: #6c7397;
+}
+
 /* ========== Top Menu Buttons ========== */
 .hamburger-menu {
   display: flex;
@@ -143,6 +151,14 @@ body.dark-theme {
   background-image: url("Images/dark-mode.png");
   background-color: #141B41;
   color: #6F9CEB;
+}
+
+body.dark-theme .footer-link{
+  color: #6F9CEB;
+}
+
+body.dark-theme .footer-link:hover{
+  color: #98B9F2;
 }
 
 body.dark-theme .button {
