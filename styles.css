@@ -18,6 +18,13 @@ body {
   overflow-y: hidden;
 }
 
+/* ========== Hover Styles ========== */
+
+.button:hover,.cells:hover{
+  transform: scale(1.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
 /* ========== Footer ========== */
 footer {
   text-decoration: underline;
@@ -48,11 +55,6 @@ footer {
   border-radius: 1rem;
   cursor: pointer;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.button:hover {
-  transform: scale(1.1);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
 /* ========== Home Screen ========== */
@@ -121,11 +123,6 @@ footer {
   box-shadow: 0 0 1rem rgba(0, 0, 0, 0.2);
   cursor: pointer;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.cells:hover {
-  transform: scale(1.1);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
 /* ========== Player and Win Styles ========== */
