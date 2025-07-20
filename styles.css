@@ -6,7 +6,7 @@
 
 /* ========== Body Styling ========== */
 body {
-  background-image: url("Images/light-mode.png");
+  background-image: url("images/light-mode.png");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -148,7 +148,7 @@ footer {
 
 /* ========== Dark Theme ========== */
 body.dark-theme {
-  background-image: url("Images/dark-mode.png");
+  background-image: url("images/dark-mode.png");
   background-color: #141B41;
   color: #6F9CEB;
 }
@@ -224,7 +224,7 @@ body.dark-theme .O {
 /* Mobile (≤768px) */
 @media screen and (max-width: 768px) {
   body {
-    background-image: url("Images/light-mode-mobile.png");
+    background-image: url("images/light-mode-mobile.png");
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -232,7 +232,7 @@ body.dark-theme .O {
   }
 
   body.dark-theme {
-    background-image: url("Images/dark-mode-mobile.png");
+    background-image: url("images/dark-mode-mobile.png");
   }
 
   .heading {

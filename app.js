@@ -15,6 +15,8 @@ let turnO = true;
 let turnCount = 0;
 
 // Music
+// Background music: Driftveil City from Pokémon Black/White
+// © Nintendo / Game Freak — used for educational/demo purposes
 const audio = new Audio("https://eta.vgmtreasurechest.com/soundtracks/pokemon-black-and-white-super-music-collection/hhrvqtky/2-02.%20Driftveil%20City.mp3");
 audio.loop = true;
 
@@ -85,7 +87,7 @@ function playerMove(cell) {
     turnCount++;
 
     msg.innerText = gameMode === "multi"
-        ? `Player ${turnO ? "X" : "O"}'s Turn`
+        ? `Player ${turnO ? "O" : "X"}'s Turn`
         : "Player's Turn";
 
     checkWinner();
