@@ -46,10 +46,14 @@ tic-tac-toe/
 │   ├── light-mode.png
 │   ├── dark-mode.png
 │   ├── light-mode-mobile.png
-│   └── dark-mode-mobile.png
+│   ├── dark-mode-mobile.png
+│   └── tic-tac-toe.png
 ├── screenshots/
-│   ├── light-theme-preview.png
-│   └── dark-theme-preview.png
+│   ├── demo.gif
+│   ├── home-light.png
+│   ├── home-dark.png
+│   ├── gameplay-light.png
+│   └── gameplay-dark.png
 ├── README.md
 └── LICENSE (optional)
 ```
