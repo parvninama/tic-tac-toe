@@ -21,7 +21,7 @@ A clean, responsive Tic Tac Toe game built with HTML, CSS, and JavaScript.
 
 ## 🔗 Live Demo
 
-🚀 [Play tic-tac-toe](https://parvninama.github.io/tic-tact-toe/)
+🚀 [Play tic-tac-toe](https://parvninama.github.io/tic-tac-toe/)
 
 ---
 
