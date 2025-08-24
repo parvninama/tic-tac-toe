@@ -10,12 +10,12 @@ A clean, responsive Tic Tac Toe game built with HTML, CSS, and JavaScript.
 
 ##  Features
 
-- 🔹 **Single Player** (vs Computer)
-- 🔹 **Two Player** (Multiplayer)
-- 🔹 **Light & Dark Themes**
-- 🔹 **Responsive Design**
-- 🔹 **Hover Animations**
-- 🔹 **Background Music Toggle**
+-  **Single Player** (vs Computer)
+-  **Two Player** (Multiplayer)
+-  **Light & Dark Themes**
+-  **Responsive Design**
+-  **Hover Animations**
+-  **Background Music Toggle**
 
 ---
 
