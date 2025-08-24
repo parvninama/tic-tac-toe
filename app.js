@@ -217,9 +217,12 @@ function disableButtons() {
 }
 
 function showWinner(winner) {
-    msg.innerText = gameMode === "multi"
-        ? `Player ${winner} wins!`
-        : "Computer Wins";
+    if (gameMode === "multi"){
+        msg.innerText = `Player ${winner} wins!`;
+    } 
+    else{
+        msg.innerText = winner === "X" ? "You Win!" : "Computer Wins!";
+    }
     msg.style.textDecoration = "underline";
     resetGameButton.innerText = "New Game";
     disableButtons();

@@ -1,4 +1,4 @@
-/* ========== Base Reset ========== */
+/* ========== Reset ========== */
 * {
   margin: 0;
   padding: 0;
@@ -6,21 +6,34 @@
 
 /* ========== Body Styling ========== */
 body {
-  background-image: url("images/light-mode.png");
-  background-repeat: no-repeat;
+  background: #98B9F2 url("images/light-mode.png") no-repeat center center fixed;
   background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
-  background-color: #98B9F2;
   text-align: center;
   color: #011627;
   font-size: 3vmin;
   overflow-y: hidden;
 }
 
-/* ========== Hover Styles ========== */
+/* Dark Theme */
+body.dark-theme {
+  background: #141B41 url("images/dark-mode.png") no-repeat center center fixed;
+  background-size: cover;
+  color: #6F9CEB;
+}
 
-.button:hover,.cells:hover{
+/* Mobile Backgrounds */
+@media screen and (max-width: 768px) {
+  body {
+    background-image: url("images/light-mode-mobile.png");
+  }
+  body.dark-theme {
+    background-image: url("images/dark-mode-mobile.png");
+  }
+}
+
+/* ========== Hover Effects ========== */
+.button:hover,
+.cells:hover {
   transform: scale(1.1);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
@@ -32,27 +45,31 @@ footer {
   margin-top: 1rem;
 }
 
-.footer-link{
+.footer-link {
   color: #141B41;
 }
-
-.footer-link:hover{
+.footer-link:hover {
   color: #6c7397;
 }
+body.dark-theme .footer-link {
+  color: #6F9CEB;
+}
+body.dark-theme .footer-link:hover {
+  color: #98B9F2;
+}
 
-/* ========== Top Menu Buttons ========== */
+/* ========== Top Menu ========== */
 .hamburger-menu {
   display: flex;
   justify-content: flex-end;
 }
-
 .home,
 .theme,
 .music {
   margin: 0.4rem;
 }
 
-/* ========== Reusable Button ========== */
+/* ========== Buttons ========== */
 .button {
   font-family: 'Lucida Sans', Geneva, Verdana, sans-serif;
   padding: 1rem;
@@ -64,6 +81,10 @@ footer {
   cursor: pointer;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
+body.dark-theme .button {
+  background-color: #98B9F2;
+  color: #141B41;
+}
 
 /* ========== Home Screen ========== */
 .home-screen {
@@ -73,14 +94,12 @@ footer {
   transform: translateX(0);
   transition: all 0.5s ease-in-out;
 }
-
 .heading {
   font-family: 'Bitcount Grid Double', sans-serif;
   margin-top: 2rem;
   font-weight: 300;
   font-size: 5rem;
 }
-
 .mode {
   margin: 3rem;
 }
@@ -92,15 +111,16 @@ footer {
   transform: translateX(0);
   transition: all 0.5s ease-in-out;
 }
-
 .msg {
   color: #141B41;
   font-size: 8vmin;
   margin: 2vmin;
 }
-
 .msg-container {
   height: 10vmin;
+}
+body.dark-theme .msg {
+  color: #98B9F2;
 }
 
 /* ========== Game Board ========== */
@@ -110,7 +130,6 @@ footer {
   align-items: center;
   justify-content: center;
 }
-
 .game {
   height: 60vmin;
   width: 60vmin;
@@ -120,7 +139,6 @@ footer {
   justify-content: center;
   gap: 1.5vmin;
 }
-
 .cells {
   height: 18vmin;
   width: 18vmin;
@@ -132,138 +150,81 @@ footer {
   cursor: pointer;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
-
-/* ========== Player and Win Styles ========== */
-.win {
-  background-color: #141B41;
-}
-
-.O {
-  color: #e0aaff;
-}
-
-.X {
-  color: #a9def9;
-}
-
-/* ========== Dark Theme ========== */
-body.dark-theme {
-  background-image: url("images/dark-mode.png");
-  background-color: #141B41;
-  color: #6F9CEB;
-}
-
-body.dark-theme .footer-link{
-  color: #6F9CEB;
-}
-
-body.dark-theme .footer-link:hover{
-  color: #98B9F2;
-}
-
-body.dark-theme .button {
-  background-color: #98B9F2;
-  color: #141B41;
-}
-
-body.dark-theme .msg {
-  color: #98B9F2;
-}
-
 body.dark-theme .cells {
   background-color: #141B41;
 }
 
+/* Player & Win States */
+.win {
+  background-color: #141B41;
+}
 body.dark-theme .win {
   background-color: #6F9CEB;
 }
-
+.O {
+  color: #e0aaff;
+}
+.X {
+  color: #a9def9;
+}
 body.dark-theme .X {
   color: #24e6e6;
 }
-
 body.dark-theme .O {
   color: #cf21b5;
 }
 
-/* ========== Responsive Design ========== */
-
-/* Tablet (≤1024px) */
+/* ========== Responsive ========== */
 @media screen and (max-width: 1024px) {
   .heading {
     font-size: 4rem;
   }
-
   .button {
     padding: 0.8rem;
     font-size: 1rem;
   }
-
   .game {
     height: 80vmin;
     width: 80vmin;
     gap: 2vmin;
   }
-
   .cells {
     height: 24vmin;
     width: 24vmin;
     font-size: 6vmin;
   }
-
   .msg {
     font-size: 6vmin;
     margin-top: 9vmin;
   }
-
   .msg-container {
     height: 12vmin;
   }
 }
-
-/* Mobile (≤768px) */
 @media screen and (max-width: 768px) {
-  body {
-    background-image: url("images/light-mode-mobile.png");
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-attachment: fixed;
-  }
-
-  body.dark-theme {
-    background-image: url("images/dark-mode-mobile.png");
-  }
-
   .heading {
     font-size: 3rem;
   }
-
   .button {
     padding: 0.6rem;
     font-size: 0.9rem;
   }
-
   .mode {
     margin: 2rem;
   }
-
   .game {
     height: 90vmin;
     width: 90vmin;
     gap: 2vmin;
   }
-
   .cells {
     height: 26vmin;
     width: 26vmin;
     font-size: 7vmin;
   }
-
   .msg {
     font-size: 5vmin;
   }
-
   .msg-container {
     height: 10vmin;
   }
