@@ -1,4 +1,4 @@
-# ✨ Tic Tac Toe
+#  Tic Tac Toe
 
 A clean, responsive Tic Tac Toe game built with HTML, CSS, and JavaScript.
 
@@ -8,7 +8,7 @@ A clean, responsive Tic Tac Toe game built with HTML, CSS, and JavaScript.
 
 ---
 
-## 🎮 Features
+##  Features
 
 - 🔹 **Single Player** (vs Computer)
 - 🔹 **Two Player** (Multiplayer)
@@ -19,13 +19,13 @@ A clean, responsive Tic Tac Toe game built with HTML, CSS, and JavaScript.
 
 ---
 
-## 🔗 Live Demo
+##  Live Demo
 
-🚀 [Play tic-tac-toe](https://parvninama.github.io/tic-tac-toe/)
+ [Play tic-tac-toe](https://parvninama.github.io/tic-tac-toe/)
 
 ---
 
-## 🛠️ Tech Stack
+##  Tech Stack
 
 - **HTML5** - Markup structure
 - **CSS3** - Styling and responsive design
@@ -35,7 +35,7 @@ A clean, responsive Tic Tac Toe game built with HTML, CSS, and JavaScript.
 
 ---
 
-## 📁 Files & Structure
+##  Files & Structure
 
 ```
 tic-tac-toe/
@@ -60,7 +60,7 @@ tic-tac-toe/
 
 ---
 
-## 🧠 AI Logic
+##  AI Logic
 
 In single-player mode, the computer:
 1. Tries to win if possible
@@ -71,9 +71,9 @@ In single-player mode, the computer:
 
 ---
 
-## 📸 Screenshots
+##  Screenshots
 
-### 🏠 Home Screen
+###  Home Screen
 
 **Light Mode**  
 ![Home Light](screenshots/home-light.png)
@@ -83,7 +83,7 @@ In single-player mode, the computer:
 
 ---
 
-### 🎮 Gameplay
+###  Gameplay
 
 **Light Mode (Single Player)**  
 ![Gameplay Light](screenshots/gameplay-light.png)
@@ -93,7 +93,7 @@ In single-player mode, the computer:
 
 ---
 
-## 📋 Credits
+##  Credits
 
 - **Favicon**  
   Icon by [Freepik](https://www.flaticon.com/authors/freepik) from [Flaticon](https://www.flaticon.com/)
@@ -105,13 +105,13 @@ In single-player mode, the computer:
 
 > *Used for non-commercial, educational/demo purposes only.*
 
-## 📜 License
+##  License
 
 This project is licensed under the **MIT License** — feel free to use, modify, and share!
 
 ---
 
-## 🤝 Connect
+##  Connect
 
 Feel free to check out more of my work on  
 👉 [Parv Ninama](https://github.com/parvninama)
